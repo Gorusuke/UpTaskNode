@@ -1,0 +1,16 @@
+extends layout
+
+block contenido
+    .contenido-principal
+        h1 #{pagina}
+
+        if errores
+            each error in errores
+                .alerta.error #{error.texto} <!-- variable de node -->
+
+        form.agregar-proyecto(action="/nuevo-proyecto" method="POST")
+            .campo
+                label(for="nombre") Nombre Proyecto
+                input(type="text" id="nombre" name="nombre" placehoder="Nombre Proyecto")
+            .campo.enviar
+                input(type="submit" value="Agregar" class="boton")
